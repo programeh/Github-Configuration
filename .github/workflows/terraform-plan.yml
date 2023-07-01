@@ -8,6 +8,8 @@ env:
   TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"
   TF_WORKSPACE: "GithubTfConfiguration"
   CONFIG_DIRECTORY: "./"
+  GITHUB_TOKEN: ${{ secrets.TOKEN }}
+  TF_IN_AUTOMATION: true
 
 jobs:
   terraform:
@@ -78,6 +80,10 @@ jobs:
               repo: context.repo.repo,
               body: output
             });
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -out workspace.plan
 
       - name: Update Pr
         uses: robburger/terraform-pr-commenter@v1
