@@ -8,6 +8,8 @@ env:
   TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"
   TF_WORKSPACE: "GithubTfConfiguration"
   CONFIG_DIRECTORY: "./"
+  GITHUB_TOKEN: ${{ secrets.TOKEN }}
+  TF_IN_AUTOMATION: true
 
 jobs:
   terraform:
@@ -60,7 +62,7 @@ jobs:
             });
             const output = `#### Terraform Cloud Plan Output
                \`\`\`
-               Plan: ${{ steps.plan-output.outputs.add }} to add, ${{ steps.plan-output.outputs.change }} to change, ${{ steps.plan-output.outputs.destroy }} to destroy.
+               Plan: ${{ steps.plan-output.outputs }} ${{ steps.plan-output.outputs.add }} to add, ${{ steps.plan-output.outputs.change }} to change, ${{ steps.plan-output.outputs.destroy }} to destroy.
                \`\`\`
                [Terraform Cloud Plan](${{ steps.plan-run.outputs.run_link }})
                `;
@@ -78,13 +80,3 @@ jobs:
               repo: context.repo.repo,
               body: output
             });
-
-      - name: Update Pr
-        uses: robburger/terraform-pr-commenter@v1
-        id: plan comment v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        with:
-          commenter_type: plan
-          commenter_input: ${{ format('{0}{1}', steps.plan.outputs.stdout, steps.plan.outputs.stderr) }}
-          commenter_exitcode: ${{ steps.plan.outputs.exitcode }}
