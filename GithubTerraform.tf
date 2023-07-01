@@ -48,13 +48,3 @@ resource "github_branch_protection" "Github_Configuration_BP" {
     strict   = true
   }
 }
-
-resource "github_team" "CodeCheckers" {
-  name = "defaultCodeCheckers"
-}
-
-resource "github_team_repository" "CodecheckerTeam" {
-  team_id    = github_team.CodeCheckers.id
-  repository = github_repository.Github_Configuration.name
-  permission = "admin"
-}
