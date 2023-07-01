@@ -1,4 +1,12 @@
 terraform {
+  required_version = "= 1.0.6"
+  backend "remote" {
+    organization = "programeh"
+    workspaces {
+      name = "GithubTfConfiguration"
+    }
+  }
+
   required_providers {
     github = {
       source  = "integrations/github"
