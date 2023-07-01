@@ -37,9 +37,9 @@ resource "github_branch_protection" "Github_Configuration_BP" {
     dismiss_stale_reviews           = true
     dismissal_restrictions          = []
     pull_request_bypassers          = []
-    require_code_owner_reviews      = true
-    require_last_push_approval      = true
-    required_approving_review_count = 1
+    require_code_owner_reviews      = false
+    require_last_push_approval      = false
+    required_approving_review_count = 0
     restrict_dismissals             = false
   }
 
@@ -47,14 +47,4 @@ resource "github_branch_protection" "Github_Configuration_BP" {
     contexts = []
     strict   = true
   }
-}
-
-resource "github_team" "CodeCheckers" {
-  name = "defaultCodeCheckers"
-}
-
-resource "github_team_repository" "CodecheckerTeam" {
-  team_id    = github_team.CodeCheckers.id
-  repository = github_repository.Github_Configuration.name
-  permission = "admin"
 }
