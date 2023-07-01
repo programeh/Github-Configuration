@@ -38,8 +38,8 @@ resource "github_branch_protection" "Github_Configuration_BP" {
     dismissal_restrictions          = []
     pull_request_bypassers          = []
     require_code_owner_reviews      = false
-    require_last_push_approval      = true
-    required_approving_review_count = 1
+    require_last_push_approval      = false
+    required_approving_review_count = 0
     restrict_dismissals             = false
   }
 
