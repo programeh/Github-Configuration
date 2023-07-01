@@ -19,3 +19,13 @@ resource "github_repository" "Github_Configuration" {
   squash_merge_commit_title   = "PR_TITLE"
   vulnerability_alerts        = false
 }
+
+resource "github_team" "CodeCheckers" {
+  name = "defaultCodeCheckers"
+}
+
+resource "github_team_repository" "CodecheckerTeam" {
+  team_id    = github_team.CodeCheckers.id
+  repository = github_repository.Github_Configuration.name
+  permission = "push"
+}
