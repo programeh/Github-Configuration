@@ -26,7 +26,7 @@ resource "github_branch_protection" "Infra_Configuration_BP" {
   blocks_creations                = false
   enforce_admins                  = true
   lock_branch                     = false
-  pattern                         = "master"
+  pattern                         = "main"
   push_restrictions               = []
   repository_id                   = github_repository.Infra_Configuration.node_id
   require_conversation_resolution = false
