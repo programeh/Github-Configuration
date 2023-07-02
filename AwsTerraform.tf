@@ -1,6 +1,6 @@
-resource "github_repository" "Github_Configuration" {
-  name                        = "Github-Configuration"
-  description                 = "Code to manage github configuration using terraform"
+resource "github_repository" "Infra_Configuration" {
+  name                        = "Infra-Configuration"
+  description                 = "Code to manage aws infra of lk account"
   allow_auto_merge            = false
   allow_merge_commit          = false
   allow_rebase_merge          = false
@@ -20,15 +20,15 @@ resource "github_repository" "Github_Configuration" {
   vulnerability_alerts        = false
 }
 
-resource "github_branch_protection" "Github_Configuration_BP" {
+resource "github_branch_protection" "Infra_Configuration_BP" {
   allows_deletions                = false
   allows_force_pushes             = true
   blocks_creations                = false
   enforce_admins                  = true
   lock_branch                     = false
-  pattern                         = "master"
+  pattern                         = "main"
   push_restrictions               = []
-  repository_id                   = github_repository.Github_Configuration.node_id
+  repository_id                   = github_repository.Infra_Configuration.node_id
   require_conversation_resolution = false
   require_signed_commits          = false
   required_linear_history         = false
