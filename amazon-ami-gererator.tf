@@ -17,6 +17,6 @@ resource "github_repository" "Amazon-Linux-CIS" {
   squash_merge_commit_message = "PR_BODY"
   squash_merge_commit_title   = "PR_TITLE"
   topics                      = []
-  visibility                  = "internal"
+  visibility                  = "private"
   vulnerability_alerts        = false
 }
