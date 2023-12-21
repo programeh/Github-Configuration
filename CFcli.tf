@@ -15,6 +15,7 @@ resource "github_repository" "CF-CLI" {
   has_projects                = true
   has_wiki                    = true
   is_template                 = false
+  visibility                  = "private"
   squash_merge_commit_message = "PR_BODY"
   squash_merge_commit_title   = "PR_TITLE"
   vulnerability_alerts        = false

@@ -44,7 +44,7 @@ resource "github_branch_protection" "Github_Configuration_BP" {
   }
 
   required_status_checks {
-    contexts = []
+    contexts = ["Terraform Plan"]
     strict   = true
   }
 }
