@@ -1,6 +1,6 @@
 resource "github_repository" "Azure_Infra_Configuration" {
   name                        = "Azure-Infra-Configuration"
-  description                 = "Code to manage aws infra of lk account"
+  description                 = "Code to manage azure infra of Asutosh account"
   allow_auto_merge            = false
   allow_merge_commit          = false
   allow_rebase_merge          = false
@@ -28,7 +28,7 @@ resource "github_branch_protection" "Azure_Infra_Configuration_BP" {
   lock_branch                     = false
   pattern                         = "master"
   push_restrictions               = []
-  repository_id                   = github_repository.Infra_Configuration.node_id
+  repository_id                   = github_repository.Azure_Infra_Configuration.node_id
   require_conversation_resolution = false
   require_signed_commits          = false
   required_linear_history         = false
